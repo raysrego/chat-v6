@@ -1,7 +1,28 @@
-const QRcode = require('qrcode-terminal');
-// Exemplo de geração de QR com bom contraste e margens
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000; // Render usa PORT por padrão
 
+// Rota para servir o QR Code
+app.get('/qrcode', (req, res) => {
+  res.sendFile(__dirname + '/qrcode.png');
+});
+
+// Inicie o servidor
+app.listen(port, () => {
+  console.log(`Servidor rodando em http://localhost:${port}`);
+});
+
+// Lógica do WhatsApp (exemplo usando whatsapp-web.js)
 const { Client } = require('whatsapp-web.js');
+const client = new Client();
+
+client.on('qr', (qr) => {
+  console.log('Escaneie este QR Code com seu WhatsApp:');
+  QRCode.toFile('qrcode.png', qr, (err) => {
+    if (err) console.error('Erro ao gerar QR Code:', err);
+    else console.log(`Acesse: https://seu-app.onrender.com/qrcode`);
+  });
+});
 
 // Configuração do cliente
 const client = new Client({
