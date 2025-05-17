@@ -1,4 +1,4 @@
-const qrcode = require('qrcode-terminal');
+const QRcode = require('qrcode-terminal');
 // Exemplo de geração de QR com bom contraste e margens
 QRCode.toFile('qrcode.png', 'https://exemplo.com', {
   color: {
