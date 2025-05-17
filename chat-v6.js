@@ -29,13 +29,6 @@ const client = new Client({
     }
 });
 
-
-//gerador de qrcode
-const qrcode = require('qrcode-terminal');
-const { Client } = require('whatsapp-web.js');
-
-
-
 // Dados da clínica
 const clinicInfo = {
     name: "INCOM – Instituto de Coluna e Ortopedia do Maranhão",
