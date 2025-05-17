@@ -1,13 +1,15 @@
-const qrcode = require('qrcode-terminal');
+const QRCode = require('qrcode'); 
 // Exemplo de geração de QR com bom contraste e margens
-QRCode.toFile('qrcode.png', 'https://exemplo.com', {
-  color: {
-    dark: '#000000',
-    light: '#ffffff'
-  },
-  margin: 4,
-  width: 300
-})
+const QRCode = require('qrcode');
+
+// Substitua 'https://exemplo.com' pelo seu conteúdo real
+QRCode.toFile('qrcode.png', 'https://exemplo.com', (err) => {
+  if (err) {
+    console.error('Erro ao gerar QR code:', err);
+    return;
+  }
+  console.log('QR code salvo em qrcode.png');
+});
 const { Client } = require('whatsapp-web.js');
 
 // Configuração do cliente
