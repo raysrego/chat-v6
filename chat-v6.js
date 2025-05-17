@@ -1,6 +1,5 @@
 const QRCode = require('qrcode'); 
 // Exemplo de geração de QR com bom contraste e margens
-const QRCode = require('qrcode');
 
 // Substitua 'https://exemplo.com' pelo seu conteúdo real
 QRCode.toFile('qrcode.png', 'https://exemplo.com', (err) => {
