@@ -1,7 +1,25 @@
+// 1. Importações
 const qrcode = require('qrcode-terminal');
-// Exemplo de geração de QR com bom contraste e margens
-
 const { Client } = require('whatsapp-web.js');
+const express = require('express');
+
+// 2. Configurar web server primeiro
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Health Check obrigatório para o Render
+app.get('/', (req, res) => {
+    res.status(200).json({ 
+        status: 'online',
+        message: 'Bot em operação'
+    });
+});
+
+// 3. Iniciar servidor IMEDIATAMENTE após a configuração
+app.listen(PORT, () => {
+    console.log(`Servidor ouvindo na porta ${PORT}`);
+});
+
 
 // Configuração do cliente
 const client = new Client({
@@ -10,6 +28,13 @@ const client = new Client({
         args: ['--no-sandbox']
     }
 });
+
+
+//gerador de qrcode
+const qrcode = require('qrcode-terminal');
+const { Client } = require('whatsapp-web.js');
+
+
 
 // Dados da clínica
 const clinicInfo = {
